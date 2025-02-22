@@ -1,0 +1,10 @@
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Peter Parker', '987.654.321-00', 3000.0, '1996-8-10', 0);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Tony Stark', '123.987.654-01', 1000000.0, '1970-5-29', 0);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Steve Rogers', '321.654.987-02', 8000.0, '1918-7-4', 0);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Natasha Romanoff', '456.789.123-03', 15000.0, '1984-11-22', 0);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Bruce Banner', '654.321.987-04', 12000.0, '1969-12-18', 0);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Thor Odinson', '789.123.456-05', 150000.0, '1000-3-3', 0);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Wanda Maximoff', '159.753.486-06', 5000.0, '1989-2-10', 2);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Clint Barton', '753.159.852-07', 7000.0, '1971-1-7', 3);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Rocket Raccoon', '159.486.753-08', 10000.0, '1972-9-15', 0);
+INSERT INTO tb_client (id, name, cpf, income, birth_date, children) VALUES (default, 'Doctor Strange', '258.369.147-09', 200000.0, '1982-11-18', 0);
