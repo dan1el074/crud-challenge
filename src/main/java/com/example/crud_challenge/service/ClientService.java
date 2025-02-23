@@ -3,14 +3,13 @@ package com.example.crud_challenge.service;
 import com.example.crud_challenge.dtos.ClientDTO;
 import com.example.crud_challenge.entities.Client;
 import com.example.crud_challenge.repositories.ClientRepository;
+import com.example.crud_challenge.service.exceptions.ResourceNotFoundException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.Optional;
-
 
 @Service
 public class ClientService {
@@ -25,8 +24,8 @@ public class ClientService {
 
     @Transactional(readOnly = true)
     public ClientDTO findById(Long id) {
-        Optional<Client> dto = clientRepository.findById(id);
-        return new ClientDTO(dto.get());
+        Client dto = clientRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
+        return new ClientDTO(dto);
     }
 
     @Transactional
@@ -39,17 +38,20 @@ public class ClientService {
 
     @Transactional
     public ClientDTO update(ClientDTO dto, Long id) {
-        Client client = new Client();
-        client.setId(id);
-        copyDtoToEntity(dto, client);
-        client = clientRepository.save(client);
-        return new ClientDTO(client);
+        try {
+            Client client = clientRepository.getReferenceById(id);
+            copyDtoToEntity(dto, client);
+            client = clientRepository.save(client);
+            return new ClientDTO(client);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException();
+        }
     }
 
     @Transactional
     public void delete(Long id) {
         if(!clientRepository.existsById(id)) {
-            throw new RuntimeException("Recurso não encontrado!");
+            throw new ResourceNotFoundException();
         }
         clientRepository.deleteById(id);
     }
