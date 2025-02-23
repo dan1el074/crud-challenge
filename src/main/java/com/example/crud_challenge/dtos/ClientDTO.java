@@ -1,16 +1,19 @@
 package com.example.crud_challenge.dtos;
 
 import com.example.crud_challenge.entities.Client;
-import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
 public class ClientDTO {
     private Long id;
+    @NotBlank(message = "Campo nome requerido!")
     private String name;
     private String cpf;
     private Double income;
+    @PastOrPresent(message = "Campo data precisa ser válido!")
     private LocalDate birthDate;
     private Integer children;
 
